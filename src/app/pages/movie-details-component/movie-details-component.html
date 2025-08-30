@@ -1,0 +1,77 @@
+<!-- HTML con estilos Vuexy -->
+<div class="content-header row">
+  <div class="content-header-left col-md-12 col-12 mb-2">
+    <div class="d-flex align-items-center">
+      <h2 class="content-header-title float-start mb-0">
+        <i class="bi bi-film me-50 text-primary"></i> {{ titulo() }}
+      </h2>
+    </div>
+    <small class="text-muted">Detalles de la película</small>
+  </div>
+</div>
+
+<div class="content-body">
+  <!-- Si no hay datos -->
+  <div class="card border-light shadow-sm" *ngIf="!pelicula()">
+    <div class="card-body text-center">
+      <i class="bi bi-exclamation-triangle text-warning fs-1 d-block mb-1"></i>
+      <p class="mb-50 fw-bold">No se encontraron datos de la película.</p>
+      <small class="text-muted d-block mb-1">Accediste directamente al enlace sin pasar por la cartelera.</small>
+      <div class="mt-1">
+        <button class="btn btn-sm btn-relief-primary waves-effect" (click)="volver()">
+          <i class="bi bi-arrow-left me-25"></i> Volver a la cartelera
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Si hay datos -->
+  <div class="card shadow-sm border-light" *ngIf="pelicula() as p">
+    <div class="row g-0">
+      <div class="col-md-4 d-flex justify-content-center align-items-center p-2">
+        <img class="img-fluid rounded w-75" [src]="posterDe(p)" [alt]="p.titulo || 'Poster'">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h3 class="card-title fw-bolder text-primary mb-75">{{ p.titulo }}</h3>
+          
+          <!-- Badges -->
+          <div class="d-flex align-items-center flex-wrap mb-1">
+            <span class="badge rounded-pill badge-light-primary me-50" *ngIf="p.genero">
+              <i class="bi bi-tags me-25"></i> {{ p.genero }}
+            </span>
+            <span class="badge rounded-pill badge-light-warning" *ngIf="p.calificacion">
+              <i class="bi bi-star-fill text-warning me-25"></i> {{ p.calificacion }}
+            </span>
+          </div>
+
+          <!-- Descripción -->
+          <p class="card-text text-muted">
+            {{ p.descripcion || 'Sin descripción disponible.' }}
+          </p>
+
+          <!-- Datos extra -->
+          <ul class="list-unstyled mb-1">
+            <li *ngIf="p.fechaEstreno">
+              <i class="bi bi-calendar-event me-50 text-primary"></i>
+              <strong>Estreno:</strong> {{ p.fechaEstreno | date:'mediumDate' }}
+            </li>
+            <li *ngIf="p.duracionMinutos">
+              <i class="bi bi-clock me-50 text-primary"></i>
+              <strong>Duración:</strong> {{ p.duracionMinutos }} min
+            </li>
+            <li *ngIf="p.director">
+              <i class="bi bi-person-video2 me-50 text-primary"></i>
+              <strong>Director:</strong> {{ p.director }}
+            </li>
+          </ul>
+
+          <!-- Botón -->
+          <button class="btn btn-sm btn-relief-secondary waves-effect" (click)="volver()">
+            <i class="bi bi-arrow-left me-25"></i> Volver
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

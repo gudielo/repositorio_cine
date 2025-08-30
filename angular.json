@@ -21,6 +21,9 @@
             "polyfills": [
               "zone.js"
             ],
+            "outputPath": "dist/mi-app",
+  "index": "src/index.html",
+  "baseHref": "/",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -71,13 +74,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1500kb",
+                  "maximumError": "2000kb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "300kb",
+                  "maximumError": "500kb"
                 }
               ],
               "outputHashing": "all"

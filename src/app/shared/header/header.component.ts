@@ -1,10 +1,12 @@
-import {Component, Inject, OnInit, PLATFORM_ID, AfterViewInit, OnDestroy} from '@angular/core';
-import {CommonModule, isPlatformBrowser} from '@angular/common';
-// ... existing code ...
+import { Component, Inject, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
+import {RouterModule} from '@angular/router';
+
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
