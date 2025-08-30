@@ -1,0 +1,134 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "tareaCineAngular": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
+              "src/assets",
+              {
+                "input": "src/assets/vuexy/app-assets/data",
+                "output": "app-assets/data",
+                "glob": "**/*"
+              },
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss",
+              "src/assets/vuexy/app-assets/css/bootstrap.css",
+              "src/assets/vuexy/app-assets/css/bootstrap-extended.css",
+              "src/assets/vuexy/app-assets/css/colors.css",
+              "src/assets/vuexy/app-assets/css/components.css",
+              "src/assets/vuexy/app-assets/css/themes/dark-layout.css",
+              "src/assets/vuexy/app-assets/css/themes/bordered-layout.css",
+              "src/assets/vuexy/app-assets/css/themes/semi-dark-layout.css",
+              "src/assets/vuexy/app-assets/css/core/menu/menu-types/vertical-menu.css",
+              "src/assets/vuexy/app-assets/css/pages/dashboard-ecommerce.css",
+              "src/assets/vuexy/app-assets/css/plugins/charts/chart-apex.css",
+              "src/assets/vuexy/app-assets/css/plugins/extensions/ext-component-toastr.css",
+              "src/assets/vuexy/app-assets/vendors/css/waves/waves.min.css",
+              "src/assets/vuexy/assets/css/style.css"
+            ],
+            "scripts": [
+              "src/assets/vuexy/app-assets/vendors/js/jquery/jquery.min.js",
+              "src/assets/vuexy/app-assets/vendors/js/bootstrap/bootstrap.min.js",
+              "src/assets/vuexy/app-assets/vendors/js/extensions/i18next.min.js",
+              "src/assets/vuexy/app-assets/vendors/js/extensions/i18nextXHRBackend.min.js",
+              "src/assets/vuexy/app-assets/vendors/js/extensions/jquery-i18next.min.js",
+              "src/assets/vuexy/app-assets/vendors/js/waves/waves.min.js",
+              "src/assets/vuexy/app-assets/vendors/js/unison-js/unison-js.min.js",
+              "src/assets/vuexy/app-assets/js/core/app-menu.js",
+              "src/assets/vuexy/app-assets/js/core/app.js",
+              "src/assets/vuexy/app-assets/vendors/js/extensions/toastr.min.js"
+            ],
+            "outputMode": "static"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "tareaCineAngular:build:production"
+            },
+            "development": {
+              "buildTarget": "tareaCineAngular:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.scss"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "50f2f335-fc54-459a-880b-f3641c2280f0"
+  }
+}

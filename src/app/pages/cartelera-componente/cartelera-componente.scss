@@ -1,0 +1,15 @@
+// Utilidades de truncado con estilo Vuexy/Bootstrap
+.text-truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-profile {
+  .card-img-top {
+    height: 320px;
+    object-fit: cover;
+    object-position: center;
+  }
+}

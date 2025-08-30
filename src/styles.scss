@@ -1,0 +1,64 @@
+body.header-only {
+  /* Quitar cualquier offset lateral propio del menú */
+  .app-content,
+  .content-wrapper {
+    margin-left: 0 !important;
+  }
+
+  /* Ajuste superior si lo necesitas (floating-nav ocupa su espacio) */
+  .app-content .content-wrapper {
+    padding-top: 1.5rem; /* ajusta a gusto (1–2rem) */
+  }
+
+  /* Forzar que el header flotante ocupe todo el ancho y no sea "tarjeta" */
+  .header-navbar.floating-nav {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  /* En algunos builds, Vuexy añade márgenes horizontales vía media queries */
+  @media (min-width: 576px) {
+    .header-navbar.floating-nav {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
+
+  /* El contenedor del navbar debe expandir al 100% */
+  .header-navbar .navbar-container {
+    width: 100% !important;
+  }
+
+  /* Ocultar cualquier wrapper de menú */
+  div[data-menu="menu-wrapper"],
+  .main-menu,
+  .sidenav-overlay {
+    display: none !important;
+    width: 0 !important;
+  }
+
+  /* Neutralizar estados del menú que podrían empujar el header */
+  &.menu-expanded .header-navbar,
+  &.menu-collapsed .header-navbar,
+  &.menu-open .header-navbar,
+  &.menu-hide .header-navbar {
+    margin-left: 0 !important;
+    left: 0 !important;
+  }
+
+  &.menu-expanded .app-content,
+  &.menu-collapsed .app-content,
+  &.menu-open .app-content,
+  &.menu-hide .app-content {
+    margin-left: 0 !important;
+  }
+}
+
+/* Altura mínima razonable del contenedor del navbar */
+nav.header-navbar .navbar-container {
+  min-height: 3.5rem; /* ajusta si tu header es más alto */
+}
